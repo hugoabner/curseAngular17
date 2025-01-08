@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { NTodo } from './../../models/todo.model';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
@@ -6,7 +7,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 @Component({
   selector: 'app-todo',
   standalone: true,
-  imports: [],
+  imports: [ CommonModule],
   templateUrl: './todo.component.html',
   styleUrl: './todo.component.scss'
 })
@@ -23,14 +24,15 @@ export class TodoComponent {
   @Input({ required: true }) todoData?: NTodo.TodoData;
 
     /***@Output => */
-  /*         => es un decorador de angular que sirve para
-  /*            pasar datos de un componente padre a un
-  /*            componente hijo. (Permite que un componente
-  /*            hijo reciba datos de un componente que lo
-  /*            contiene)
-
+  /*         => Es un decorador de angular que se utiliza
+  /*            para declarar un evento de un componente
+  /*            hijo que puede ser escuchado por un componente
+  /*            padre */
+    /**@EventEmitier => */
+  /*            => Es una clase de Angular que se utiliza
+  /*               para emitir un eventos personalizados
   /*creamos una */
-  @Output() onClickIcon = new EventEmitter<boolean>();
+  @Output() onClickIcon = new EventEmitter<NTodo.TodoData>();
 
 
 

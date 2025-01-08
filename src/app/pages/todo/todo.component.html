@@ -1,15 +1,16 @@
 <div class="card-container">
-    <span class="icon-close">x</span>
+  @if (todoData) {
+ <span class="icon-close" (click)="onClickIcon.emit(todoData)">x</span>
 
     <div class="card-body">
         <div class="card-content">
             <!-- Interpolacion de datos -->
             <h3>
-              {{todoData?.id}}.
-              {{ todoData?.title }}
+              {{todoData.id}}.
+              {{ todoData.title }}
             </h3>
             <p>
-              {{ todoData?.description }}
+              {{ todoData.description }}
             </p>
         </div>
     </div>
@@ -17,16 +18,16 @@
     <div class="card-content pills-container">
         <p>Estado:
             <span class="status">
-              {{ todoData?.status }}
+              {{ todoData.status }}
             </span>
         </p>
         <p> Prioridad:
             <span class="priority">
-              {{ todoData?.priority }}
+              {{ todoData.priority }}
             </span>
         </p>
         <p>
-          Fecha límite: {{ todoData?.deadLine }}
+          Fecha límite: {{ todoData.deadLine }}
         </p>
     </div>
 
@@ -36,8 +37,20 @@
             </div>
         </div>
         <span>
-          {{ todoData?.progress }} %
+          {{ todoData.progress }} %
         </span>
     </section>
 
+  } @else {
+    no hay datos
+  }
+
+
 </div>
+<!-- <ng-template class="no-data" #noData >
+  <div class="card-container">
+    <h3 class="no-data">
+      No hay datos para mostrar
+    </h3>
+  </div>
+</ng-template> -->
